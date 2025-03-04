@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
+<h1>Productos</h1>
+
+<div id="productos">
+  <% @productos.each do |producto| %>
+    <%= render producto %>
+    <p>
+      <%= link_to "Show this producto", producto %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New producto", new_producto_path %>

@@ -1,0 +1,40 @@
+# <% if flash[:error] %>
+#   <p><%= flash[:error] %></p>
+# <% end %>
+<h2>Product Edition</h2>
+<%= render "form", producto: @producto %>
+<br>
+<div>
+  <%= link_to "Show this producto", @producto %> |
+  <%= link_to "Back to productos", productos_path %>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function checkFields() {
+      let name = document.getElementById("producto_name")?.value.trim();
+      let price = document.getElementById("producto_price")?.value.trim();
+      let description = document.getElementById("producto_description")?.value.trim();
+      let submitButton = document.getElementById("submit_button");
+
+      if (!submitButton) return;
+
+      if (name === "" || price === "" || description === "") {
+        submitButton.disabled = true;
+      } else {
+        submitButton.disabled = false;
+      }
+    }
+
+    let nameField = document.getElementById("producto_name");
+    let priceField = document.getElementById("producto_price");
+    let descriptionField = document.getElementById("producto_description");
+
+    if (nameField && priceField && descriptionField) {
+      nameField.addEventListener("input", checkFields);
+      priceField.addEventListener("input", checkFields);
+      descriptionField.addEventListener("input", checkFields);
+    }
+
+    checkFields(); // Verificar el estado inicial
+  });
+</script>
