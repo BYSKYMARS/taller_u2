@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: |
         gem install bundler
-        bundle install
+        bundle install --jobs 4 --retry 3
     - name: DB setup
       run: |
         bin/rails db:create
